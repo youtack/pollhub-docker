@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#5b5bf0" />
+    <title>PollHub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+            <path d="M6 20V10M12 20V4M18 20v-6" />
+          </svg>
+        </span>
+        PollHub
+      </div>
+      <span id="api-badge" class="badge badge-off">api offline</span>
+    </header>
+
+    <main class="container">
+      <div class="hero">
+        <h1>Ask anything. See it live.</h1>
+        <p>Create a poll, cast a vote, and watch the results update in real time.</p>
+      </div>
+
+      <section class="stats">
+        <div class="stat-card">
+          <div class="stat-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            Total votes
+          </div>
+          <div class="stat-value" id="stat-total">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+            Aggregated
+          </div>
+          <div class="stat-value" id="stat-aggregated">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+            Polls
+          </div>
+          <div class="stat-value" id="stat-polls">0</div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <h2>Create a poll</h2>
+        </div>
+        <form id="create-form">
+          <div class="field">
+            <label for="question">Question</label>
+            <input id="question" type="text" placeholder="e.g. Which tool should we adopt?" autocomplete="off" />
+          </div>
+          <div class="field">
+            <label>Options</label>
+            <div id="options-editor" class="options-editor"></div>
+            <button type="button" id="add-option" class="add-option">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              Add option
+            </button>
+          </div>
+          <div class="form-footer">
+            <span class="hint">Add at least two options.</span>
+            <button type="submit" class="btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              Publish poll
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <div class="section-title">
+        <h2>Live polls</h2>
+        <span class="count" id="polls-count"></span>
+      </div>
+      <section id="polls" class="polls"></section>
+    </main>
+
+    <div id="toasts" class="toasts"></div>
+
+    <footer class="footer">
+      <span>PollHub · built __BUILD_TIME__</span>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>
